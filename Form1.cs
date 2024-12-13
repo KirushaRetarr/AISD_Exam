@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO; // Подключаем пространство имен для работы с файлами
+using System.IO;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
@@ -83,7 +83,7 @@ namespace AISD_Exam
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             // Определяем, какой тип компонента выбран
-            string selectedType = "All"; // по умолчанию показываем все типы
+            string selectedType = "All";
             if (checkBoxProcessor.Checked)
                 selectedType = "Processor";
             else if (checkBoxGraphicsCard.Checked)
@@ -96,7 +96,6 @@ namespace AISD_Exam
                 selectedType = "RAM";
             else if (checkBoxStorage.Checked)
                 selectedType = "Storage";
-            // Добавьте другие типы по аналогии
 
             // Получаем выбранную совместимость из ComboBox
             int compatibility = int.Parse(comboBox1.SelectedItem.ToString());
