@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -11,6 +10,7 @@ using System.IO; // Подключаем пространство имен дл�
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
+using ClassLibrary1;
 
 namespace AISD_Exam
 {
@@ -22,111 +22,6 @@ namespace AISD_Exam
         {
             InitializeComponent();
             LoadDataFromFile();
-        }
-
-        // Класс для компонента
-        public class Component
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string ComponentType { get; set; }
-            public string Specifications { get; set; }
-            public decimal Price { get; set; }
-            public int Compatibility { get; set; }
-            public int Efficiency { get; set; }
-
-            // Конструктор для удобства
-            public Component(int id, string name, string componentType, string specifications, decimal price, int compatibility, int efficiency)
-            {
-                Id = id;
-                Name = name;
-                ComponentType = componentType;
-                Specifications = specifications;
-                Price = price;
-                Compatibility = compatibility;
-                Efficiency = efficiency;
-            }
-        }
-
-        // Класс для узла односвязного списка
-        public class Node
-        {
-            public Component Data { get; set; }
-            public Node Next { get; set; }
-
-            public Node(Component data)
-            {
-                Data = data;
-                Next = null;
-            }
-        }
-
-        // Класс для самого списка
-        public class LinkedList
-        {
-            public Node Head { get; set; }
-
-            public LinkedList()
-            {
-                Head = null;
-            }
-
-            // Добавление нового узла в конец списка
-            public void Add(Component component)
-            {
-                Node newNode = new Node(component);
-                if (Head == null)
-                {
-                    Head = newNode;
-                }
-                else
-                {
-                    Node current = Head;
-                    while (current.Next != null)
-                    {
-                        current = current.Next;
-                    }
-                    current.Next = newNode;
-                }
-            }
-
-            // Преобразование списка в DataGridView
-            public void ToDataGridView(DataGridView dataGridView)
-            {
-                Node current = Head;
-                while (current != null)
-                {
-                    dataGridView.Rows.Add(current.Data.Id, current.Data.Name, current.Data.ComponentType, current.Data.Specifications, current.Data.Price, current.Data.Compatibility, current.Data.Efficiency);
-                    current = current.Next;
-                }
-            }
-
-            // Метод для фильтрации и сортировки компонентов
-            public void FilterAndSort(DataGridView dataGridView, string selectedType, int compatibility)
-            {
-                var filteredComponents = new System.Collections.Generic.List<Component>();
-
-                // Фильтруем компоненты по типу и совместимости
-                Node current = Head;
-                while (current != null)
-                {
-                    if ((selectedType == "All" || current.Data.ComponentType == selectedType) && current.Data.Compatibility == compatibility)
-                    {
-                        filteredComponents.Add(current.Data);
-                    }
-                    current = current.Next;
-                }
-
-                // Сортируем компоненты по соотношению цена/производительность (от лучшего к худшему)
-                var sortedComponents = filteredComponents.OrderBy(c => c.Efficiency).ToList();
-
-                // Очищаем DataGridView и добавляем отсортированные данные
-                dataGridView.Rows.Clear();
-                foreach (var component in sortedComponents)
-                {
-                    dataGridView.Rows.Add(component.Id, component.Name, component.ComponentType, component.Specifications, component.Price, component.Compatibility, component.Efficiency);
-                }
-            }
         }
 
         // Метод для загрузки данных из файла
@@ -195,18 +90,19 @@ namespace AISD_Exam
                 selectedType = "Graphics Card";
             else if (checkBoxMotherboard.Checked)
                 selectedType = "Motherboard";
+            else if (checkBoxCase.Checked)
+                selectedType = "Case";
+            else if (checkBoxRAM.Checked)
+                selectedType = "RAM";
+            else if (checkBoxStorage.Checked)
+                selectedType = "Storage";
             // Добавьте другие типы по аналогии
 
-            // Получаем выбранную совместимость из TextBox или другого источника
-            int compatibility = int.Parse(textBoxCompatibility.Text);
+            // Получаем выбранную совместимость из ComboBox
+            int compatibility = int.Parse(comboBox1.SelectedItem.ToString());
 
             // Применяем фильтрацию и сортировку
             componentList.FilterAndSort(dataGridView1, selectedType, compatibility);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

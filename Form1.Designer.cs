@@ -32,24 +32,28 @@
             this.checkBoxProcessor = new System.Windows.Forms.CheckBox();
             this.checkBoxGraphicsCard = new System.Windows.Forms.CheckBox();
             this.checkBoxMotherboard = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBoxCompatibility = new System.Windows.Forms.TextBox();
+            this.checkBoxStorage = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxCase = new System.Windows.Forms.CheckBox();
+            this.checkBoxRAM = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(275, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(823, 386);
+            this.dataGridView1.Size = new System.Drawing.Size(560, 386);
             this.dataGridView1.TabIndex = 0;
             // 
             // checkBoxProcessor
             // 
             this.checkBoxProcessor.AutoSize = true;
-            this.checkBoxProcessor.Location = new System.Drawing.Point(192, 426);
+            this.checkBoxProcessor.Location = new System.Drawing.Point(129, 52);
             this.checkBoxProcessor.Name = "checkBoxProcessor";
             this.checkBoxProcessor.Size = new System.Drawing.Size(73, 17);
             this.checkBoxProcessor.TabIndex = 1;
@@ -60,7 +64,7 @@
             // checkBoxGraphicsCard
             // 
             this.checkBoxGraphicsCard.AutoSize = true;
-            this.checkBoxGraphicsCard.Location = new System.Drawing.Point(192, 449);
+            this.checkBoxGraphicsCard.Location = new System.Drawing.Point(129, 121);
             this.checkBoxGraphicsCard.Name = "checkBoxGraphicsCard";
             this.checkBoxGraphicsCard.Size = new System.Drawing.Size(90, 17);
             this.checkBoxGraphicsCard.TabIndex = 2;
@@ -71,7 +75,7 @@
             // checkBoxMotherboard
             // 
             this.checkBoxMotherboard.AutoSize = true;
-            this.checkBoxMotherboard.Location = new System.Drawing.Point(321, 426);
+            this.checkBoxMotherboard.Location = new System.Drawing.Point(129, 75);
             this.checkBoxMotherboard.Name = "checkBoxMotherboard";
             this.checkBoxMotherboard.Size = new System.Drawing.Size(86, 17);
             this.checkBoxMotherboard.TabIndex = 3;
@@ -79,40 +83,69 @@
             this.checkBoxMotherboard.UseVisualStyleBackColor = true;
             this.checkBoxMotherboard.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
-            // checkBox4
+            // checkBoxStorage
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(450, 426);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(80, 17);
-            this.checkBox4.TabIndex = 4;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // textBoxCompatibility
-            // 
-            this.textBoxCompatibility.Location = new System.Drawing.Point(12, 426);
-            this.textBoxCompatibility.Name = "textBoxCompatibility";
-            this.textBoxCompatibility.Size = new System.Drawing.Size(100, 20);
-            this.textBoxCompatibility.TabIndex = 5;
+            this.checkBoxStorage.AutoSize = true;
+            this.checkBoxStorage.Location = new System.Drawing.Point(129, 144);
+            this.checkBoxStorage.Name = "checkBoxStorage";
+            this.checkBoxStorage.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxStorage.TabIndex = 4;
+            this.checkBoxStorage.Text = "Storage";
+            this.checkBoxStorage.UseVisualStyleBackColor = true;
+            this.checkBoxStorage.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 410);
+            this.label1.Location = new System.Drawing.Point(12, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Выберите 1 или 2";
+            this.label1.Text = "Совместимость";
+            // 
+            // checkBoxCase
+            // 
+            this.checkBoxCase.AutoSize = true;
+            this.checkBoxCase.Location = new System.Drawing.Point(129, 98);
+            this.checkBoxCase.Name = "checkBoxCase";
+            this.checkBoxCase.Size = new System.Drawing.Size(50, 17);
+            this.checkBoxCase.TabIndex = 7;
+            this.checkBoxCase.Text = "Case";
+            this.checkBoxCase.UseVisualStyleBackColor = true;
+            this.checkBoxCase.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            // 
+            // checkBoxRAM
+            // 
+            this.checkBoxRAM.AutoSize = true;
+            this.checkBoxRAM.Location = new System.Drawing.Point(129, 167);
+            this.checkBoxRAM.Name = "checkBoxRAM";
+            this.checkBoxRAM.Size = new System.Drawing.Size(50, 17);
+            this.checkBoxRAM.TabIndex = 8;
+            this.checkBoxRAM.Text = "RAM";
+            this.checkBoxRAM.UseVisualStyleBackColor = true;
+            this.checkBoxRAM.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBox1.Location = new System.Drawing.Point(15, 48);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(71, 21);
+            this.comboBox1.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 520);
+            this.ClientSize = new System.Drawing.Size(847, 404);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.checkBoxRAM);
+            this.Controls.Add(this.checkBoxCase);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxCompatibility);
-            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.checkBoxStorage);
             this.Controls.Add(this.checkBoxMotherboard);
             this.Controls.Add(this.checkBoxGraphicsCard);
             this.Controls.Add(this.checkBoxProcessor);
@@ -131,9 +164,11 @@
         private System.Windows.Forms.CheckBox checkBoxProcessor;
         private System.Windows.Forms.CheckBox checkBoxGraphicsCard;
         private System.Windows.Forms.CheckBox checkBoxMotherboard;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.TextBox textBoxCompatibility;
+        private System.Windows.Forms.CheckBox checkBoxStorage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxCase;
+        private System.Windows.Forms.CheckBox checkBoxRAM;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
