@@ -86,22 +86,55 @@ namespace AISD_Exam
             string selectedType = "All";
             if (checkBoxProcessor.Checked)
                 selectedType = "Processor";
-            else if (checkBoxGraphicsCard.Checked)
+            if (checkBoxGraphicsCard.Checked)
                 selectedType = "Graphics Card";
-            else if (checkBoxMotherboard.Checked)
+            if (checkBoxMotherboard.Checked)
                 selectedType = "Motherboard";
-            else if (checkBoxCase.Checked)
+            if (checkBoxCase.Checked)
                 selectedType = "Case";
-            else if (checkBoxRAM.Checked)
+            if (checkBoxRAM.Checked)
                 selectedType = "RAM";
-            else if (checkBoxStorage.Checked)
+            if (checkBoxStorage.Checked)
                 selectedType = "Storage";
 
-            // Получаем выбранную совместимость из ComboBox
-            int compatibility = int.Parse(comboBox1.SelectedItem.ToString());
+            // Проверка на выбор в ComboBox
+            int compatibility = 0; // Значение по умолчанию
+            if (comboBox1.SelectedItem != null && int.TryParse(comboBox1.SelectedItem.ToString(), out int result))
+            {
+                compatibility = result;
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите значение совместимости из списка.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                checkBoxProcessor.Checked = false;
+                checkBoxGraphicsCard.Checked = false;
+                checkBoxMotherboard.Checked = false;
+                checkBoxCase.Checked = false;
+                checkBoxRAM.Checked = false;
+                checkBoxStorage.Checked = false;
+                return; // Прерываем выполнение метода
+            }
 
             // Применяем фильтрацию и сортировку
             componentList.FilterAndSort(dataGridView1, selectedType, compatibility);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Снимаем все чекбоксы
+            checkBoxProcessor.Checked = false;
+            checkBoxGraphicsCard.Checked = false;
+            checkBoxMotherboard.Checked = false;
+            checkBoxCase.Checked = false;
+            checkBoxRAM.Checked = false;
+            checkBoxStorage.Checked = false;
+
+            // Сбрасываем ComboBox
+            comboBox1.SelectedIndex = -1;
+
+            // Очищаем DataGridView и загружаем все данные
+            dataGridView1.Rows.Clear();
+            componentList.ToDataGridView(dataGridView1);
         }
     }
 }
